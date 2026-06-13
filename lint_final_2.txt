@@ -1,0 +1,48 @@
+
+> cybernexus@0.1.0 lint
+> eslint
+
+
+C:\Users\Tharu\OneDrive\Documents\OpenClaw\cybernexus\components\canvas\Experience.tsx
+  17:18  error  Error: Cannot call impure function during render
+
+`Math.random` is an impure function. Calling an impure function can produce unstable results that update unpredictably when the component happens to re-render. (https://react.dev/reference/rules/components-and-hooks-must-be-pure#components-and-hooks-must-be-idempotent).
+
+C:\Users\Tharu\OneDrive\Documents\OpenClaw\cybernexus\components\canvas\Experience.tsx:17:18
+  15 |         return Array.from({ length: 50 }).map(() => ({
+  16 |             position: [
+> 17 |                 (Math.random() - 0.5) * 30,
+     |                  ^^^^^^^^^^^^^ Cannot call impure function
+  18 |                 (Math.random() - 0.5) * 30,
+  19 |                 (Math.random() - 0.5) * 30
+  20 |             ] as [number, number, number]  react-hooks/purity
+  18:18  error  Error: Cannot call impure function during render
+
+`Math.random` is an impure function. Calling an impure function can produce unstable results that update unpredictably when the component happens to re-render. (https://react.dev/reference/rules/components-and-hooks-must-be-pure#components-and-hooks-must-be-idempotent).
+
+C:\Users\Tharu\OneDrive\Documents\OpenClaw\cybernexus\components\canvas\Experience.tsx:18:18
+  16 |             position: [
+  17 |                 (Math.random() - 0.5) * 30,
+> 18 |                 (Math.random() - 0.5) * 30,
+     |                  ^^^^^^^^^^^^^ Cannot call impure function
+  19 |                 (Math.random() - 0.5) * 30
+  20 |             ] as [number, number, number]
+  21 |         }));                                            react-hooks/purity
+  19:18  error  Error: Cannot call impure function during render
+
+`Math.random` is an impure function. Calling an impure function can produce unstable results that update unpredictably when the component happens to re-render. (https://react.dev/reference/rules/components-and-hooks-must-be-pure#components-and-hooks-must-be-idempotent).
+
+C:\Users\Tharu\OneDrive\Documents\OpenClaw\cybernexus\components\canvas\Experience.tsx:19:18
+  17 |                 (Math.random() - 0.5) * 30,
+  18 |                 (Math.random() - 0.5) * 30,
+> 19 |                 (Math.random() - 0.5) * 30
+     |                  ^^^^^^^^^^^^^ Cannot call impure function
+  20 |             ] as [number, number, number]
+  21 |         }));
+  22 |     }, [mounted]);                                                 react-hooks/purity
+
+C:\Users\Tharu\OneDrive\Documents\OpenClaw\cybernexus\components\sections\Contact.tsx
+  4:10  warning  'motion' is defined but never used  @typescript-eslint/no-unused-vars
+
+Γ£û 4 problems (3 errors, 1 warning)
+

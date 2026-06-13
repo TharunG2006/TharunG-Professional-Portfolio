@@ -1,0 +1,48 @@
+
+> cybernexus@0.1.0 lint
+> eslint
+
+
+C:\Users\Tharu\OneDrive\Documents\OpenClaw\cybernexus\components\canvas\Experience.tsx
+   3:10  warning  'useRef' is defined but never used                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             @typescript-eslint/no-unused-vars
+   4:10  warning  'useFrame' is defined but never used                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           @typescript-eslint/no-unused-vars
+   5:10  warning  'Mesh' is defined but never used                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               @typescript-eslint/no-unused-vars
+  54:30  error    Error: Cannot call impure function during render
+
+`Math.random` is an impure function. Calling an impure function can produce unstable results that update unpredictably when the component happens to re-render. (https://react.dev/reference/rules/components-and-hooks-must-be-pure#components-and-hooks-must-be-idempotent).
+
+C:\Users\Tharu\OneDrive\Documents\OpenClaw\cybernexus\components\canvas\Experience.tsx:54:30
+  52 |                         key={i}
+  53 |                         position={[
+> 54 |                             (Math.random() - 0.5) * 30,
+     |                              ^^^^^^^^^^^^^ Cannot call impure function
+  55 |                             (Math.random() - 0.5) * 30,
+  56 |                             (Math.random() - 0.5) * 30
+  57 |                         ]}                   react-hooks/purity
+  55:30  error    Error: Cannot call impure function during render
+
+`Math.random` is an impure function. Calling an impure function can produce unstable results that update unpredictably when the component happens to re-render. (https://react.dev/reference/rules/components-and-hooks-must-be-pure#components-and-hooks-must-be-idempotent).
+
+C:\Users\Tharu\OneDrive\Documents\OpenClaw\cybernexus\components\canvas\Experience.tsx:55:30
+  53 |                         position={[
+  54 |                             (Math.random() - 0.5) * 30,
+> 55 |                             (Math.random() - 0.5) * 30,
+     |                              ^^^^^^^^^^^^^ Cannot call impure function
+  56 |                             (Math.random() - 0.5) * 30
+  57 |                         ]}
+  58 |                     >                             react-hooks/purity
+  56:30  error    Error: Cannot call impure function during render
+
+`Math.random` is an impure function. Calling an impure function can produce unstable results that update unpredictably when the component happens to re-render. (https://react.dev/reference/rules/components-and-hooks-must-be-pure#components-and-hooks-must-be-idempotent).
+
+C:\Users\Tharu\OneDrive\Documents\OpenClaw\cybernexus\components\canvas\Experience.tsx:56:30
+  54 |                             (Math.random() - 0.5) * 30,
+  55 |                             (Math.random() - 0.5) * 30,
+> 56 |                             (Math.random() - 0.5) * 30
+     |                              ^^^^^^^^^^^^^ Cannot call impure function
+  57 |                         ]}
+  58 |                     >
+  59 |                         <sphereGeometry args={[0.05, 8, 8]} />  react-hooks/purity
+
+Γ£û 6 problems (3 errors, 3 warnings)
+

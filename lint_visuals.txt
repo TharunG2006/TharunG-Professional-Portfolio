@@ -1,0 +1,45 @@
+
+> cybernexus@0.1.0 lint
+> eslint
+
+
+C:\Users\Tharu\OneDrive\Documents\OpenClaw\cybernexus\components\ui\meteors.tsx
+  26:42  error  Error: Cannot call impure function during render
+
+`Math.random` is an impure function. Calling an impure function can produce unstable results that update unpredictably when the component happens to re-render. (https://react.dev/reference/rules/components-and-hooks-must-be-pure#components-and-hooks-must-be-idempotent).
+
+C:\Users\Tharu\OneDrive\Documents\OpenClaw\cybernexus\components\ui\meteors.tsx:26:42
+  24 |                     style={{
+  25 |                         top: 0,
+> 26 |                         left: Math.floor(Math.random() * (400 - -400) + -400) + "px",
+     |                                          ^^^^^^^^^^^^^ Cannot call impure function
+  27 |                         animationDelay: Math.random() * (0.8 - 0.2) + 0.2 + "s",
+  28 |                         animationDuration: Math.floor(Math.random() * (10 - 2) + 2) + "s",
+  29 |                     }}  react-hooks/purity
+  27:41  error  Error: Cannot call impure function during render
+
+`Math.random` is an impure function. Calling an impure function can produce unstable results that update unpredictably when the component happens to re-render. (https://react.dev/reference/rules/components-and-hooks-must-be-pure#components-and-hooks-must-be-idempotent).
+
+C:\Users\Tharu\OneDrive\Documents\OpenClaw\cybernexus\components\ui\meteors.tsx:27:41
+  25 |                         top: 0,
+  26 |                         left: Math.floor(Math.random() * (400 - -400) + -400) + "px",
+> 27 |                         animationDelay: Math.random() * (0.8 - 0.2) + 0.2 + "s",
+     |                                         ^^^^^^^^^^^^^ Cannot call impure function
+  28 |                         animationDuration: Math.floor(Math.random() * (10 - 2) + 2) + "s",
+  29 |                     }}
+  30 |                 ></span>       react-hooks/purity
+  28:55  error  Error: Cannot call impure function during render
+
+`Math.random` is an impure function. Calling an impure function can produce unstable results that update unpredictably when the component happens to re-render. (https://react.dev/reference/rules/components-and-hooks-must-be-pure#components-and-hooks-must-be-idempotent).
+
+C:\Users\Tharu\OneDrive\Documents\OpenClaw\cybernexus\components\ui\meteors.tsx:28:55
+  26 |                         left: Math.floor(Math.random() * (400 - -400) + -400) + "px",
+  27 |                         animationDelay: Math.random() * (0.8 - 0.2) + 0.2 + "s",
+> 28 |                         animationDuration: Math.floor(Math.random() * (10 - 2) + 2) + "s",
+     |                                                       ^^^^^^^^^^^^^ Cannot call impure function
+  29 |                     }}
+  30 |                 ></span>
+  31 |             ))}         react-hooks/purity
+
+Γ£û 3 problems (3 errors, 0 warnings)
+
