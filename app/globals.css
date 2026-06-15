@@ -1,141 +1,137 @@
 @import "tailwindcss";
 
 :root {
-  /* Space Theme Palette */
-  --background: #0b0d17;
-  /* Deep Void Black */
-  --foreground: #e0e7ff;
-  /* Star White */
+  /* Cozy Theme Palette */
+  --background: #fdfbf7;
+  --foreground: #334155;
 
-  --color-neon-green: #4cc9f0;
-  /* Neon Cyan (Primary) */
-  --color-neon-cyan: #f72585;
-  /* Nebula Pink (Accent) */
-  --color-neon-blue: #4361ee;
-  /* Cosmic Blue */
-  --color-neon-pink: #7209b7;
-  /* Deep Violet */
-  --color-alert-red: #ef233c;
-  /* Red Giant */
-  --color-dark-gray: #1b263b;
-  /* Dark Nebula */
+  --color-primary-soft: #ffb5a7;
+  --color-secondary-soft: #a3cfcd;
+  --color-accent-soft: #fcd5ce;
+  --color-glass: rgba(255, 255, 255, 0.5);
+  --color-glass-border: rgba(255, 255, 255, 0.8);
+  --color-shadow-dark: rgba(180, 170, 160, 0.2);
 
-  --font-sans: 'Inter', sans-serif;
-  --font-mono: 'Share Tech Mono', monospace;
+  /* Clay Card Variables */
+  --card-bg: rgba(255, 255, 255, 0.75);
+  --card-highlight-outer: rgba(255, 255, 255, 0.8);
+  --card-highlight-inner: rgba(255, 255, 255, 0.9);
+  --card-inset-shadow: rgba(0, 0, 0, 0.02);
+
+  --font-sans: 'Nunito', sans-serif;
+  --font-heading: 'Quicksand', sans-serif;
+}
+
+.dark {
+  /* Midnight Theme Palette */
+  --background: #0f172a;
+  --foreground: #e2e8f0;
+
+  --color-primary-soft: #818cf8; /* Soft Indigo */
+  --color-secondary-soft: #2dd4bf; /* Teal */
+  --color-accent-soft: #a78bfa; /* Violet */
+  --color-glass: rgba(15, 23, 42, 0.6);
+  --color-glass-border: rgba(255, 255, 255, 0.1);
+  --color-shadow-dark: rgba(0, 0, 0, 0.4);
+
+  /* Clay Card Variables Dark */
+  --card-bg: rgba(255, 255, 255, 0.05); /* Highly transparent to show liquid bg */
+  --card-highlight-outer: rgba(255, 255, 255, 0.08);
+  --card-highlight-inner: rgba(255, 255, 255, 0.15);
+  --card-inset-shadow: rgba(0, 0, 0, 0.4);
 }
 
 @theme {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --color-neon-green: var(--color-neon-green);
-  --color-neon-cyan: var(--color-neon-cyan);
-  --color-neon-blue: var(--color-neon-blue);
-  --color-neon-pink: var(--color-neon-pink);
-  --color-alert-red: var(--color-alert-red);
-  --color-dark-gray: var(--color-dark-gray);
+  --color-primary-soft: var(--color-primary-soft);
+  --color-secondary-soft: var(--color-secondary-soft);
+  --color-accent-soft: var(--color-accent-soft);
 
   --font-sans: var(--font-sans);
-  --font-mono: var(--font-mono);
+  --font-heading: var(--font-heading);
 
-  --animate-meteor: meteor 5s linear infinite;
-  --animate-shimmer: shimmer 2s linear infinite;
-  --animate-grid: grid-flow 20s linear infinite;
-  --animate-scanline: scanline 8s linear infinite;
-
-  @keyframes meteor {
-    0% {
-      transform: rotate(215deg) translateX(0);
-      opacity: 1;
-    }
-
-    70% {
-      opacity: 1;
-    }
-
-    100% {
-      transform: rotate(215deg) translateX(-500px);
-      opacity: 0;
-    }
+  @keyframes blob-float {
+    0% { transform: translate(0px, 0px) scale(1); }
+    33% { transform: translate(30px, -50px) scale(1.1); }
+    66% { transform: translate(-20px, 20px) scale(0.9); }
+    100% { transform: translate(0px, 0px) scale(1); }
+  }
+  
+  @keyframes gradient-shift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
   }
 
-  @keyframes shimmer {
-    from {
-      background-position: 0 0;
-    }
-
-    to {
-      background-position: -200% 0;
-    }
-  }
-
-  @keyframes grid-flow {
-    0% {
-      transform: translateY(0);
-    }
-
-    100% {
-      transform: translateY(50px);
-    }
-  }
-
-  @keyframes scanline {
-    0% {
-      transform: translateY(-100%);
-    }
-
-    100% {
-      transform: translateY(100%);
-    }
-  }
-
-  @keyframes spin {
-    from {
-      transform: rotate(0deg) scale(1.5);
-    }
-
-    to {
-      transform: rotate(360deg) scale(1.5);
-    }
-  }
-
-  --animate-spin-slow: spin 20s linear infinite;
+  --animate-blob: blob-float 15s infinite ease-in-out;
+  --animate-gradient: gradient-shift 8s ease infinite;
 }
+
+@custom-variant dark (&:where(.dark, .dark *));
 
 html {
   scroll-behavior: smooth;
 }
 
 body {
-  background: radial-gradient(circle at center, #1b2735 0%, #090a0f 100%);
   color: var(--foreground);
   font-family: var(--font-sans);
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
+  transition: color 0.3s ease;
 }
 
-/* Custom Scrollbar - Softened */
+/* Custom Scrollbar - Soft */
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 10px;
 }
 
 ::-webkit-scrollbar-track {
-  background: var(--background);
+  background: transparent;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--color-dark-gray);
-  border-radius: 4px;
+  background: var(--color-primary-soft);
+  border-radius: 10px;
+  border: 2px solid var(--background);
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--color-neon-blue);
+  background: var(--color-secondary-soft);
 }
 
-/* Utility classes for text glow - Softened */
-.text-glow-green {
-  text-shadow: 0 0 15px var(--color-neon-green), 0 0 30px var(--color-neon-green);
+/* Claymorphism Utilities */
+.clay-card {
+  background: var(--card-bg);
+  backdrop-filter: blur(80px);
+  -webkit-backdrop-filter: blur(80px);
+  border-radius: 24px;
+  border: 1px solid var(--color-glass-border);
+  box-shadow: 
+    8px 8px 16px var(--color-shadow-dark),
+    -8px -8px 16px var(--card-highlight-outer),
+    inset 2px 2px 4px var(--card-highlight-inner),
+    inset -2px -2px 4px var(--card-inset-shadow);
+  transition: background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
-.text-glow-cyan {
-  text-shadow: 0 0 15px var(--color-neon-cyan);
+.clay-button {
+  background: var(--color-primary-soft);
+  border-radius: 16px;
+  border: 2px solid var(--color-glass-border);
+  box-shadow: 
+    4px 4px 8px var(--color-shadow-dark),
+    -4px -4px 8px var(--card-highlight-outer),
+    inset 2px 2px 4px var(--card-highlight-inner);
+  transition: all 0.2s ease;
+  color: var(--foreground);
+  font-weight: 700;
+}
+
+.clay-button:active {
+  box-shadow: 
+    inset 4px 4px 8px var(--color-shadow-dark),
+    inset -4px -4px 8px var(--card-highlight-outer);
+  transform: translateY(2px);
 }

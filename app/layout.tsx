@@ -1,23 +1,25 @@
 import type { Metadata } from "next";
-import { Inter, Share_Tech_Mono } from "next/font/google";
+import { Nunito, Quicksand } from "next/font/google";
 import "./globals.css";
 import { AudioPlayer } from "@/components/ui/AudioPlayer";
 
-const inter = Inter({
+const nunito = Nunito({
   variable: "--font-sans",
   subsets: ["latin"],
 });
 
-const shareTechMono = Share_Tech_Mono({
-  weight: "400",
-  variable: "--font-mono",
+const quicksand = Quicksand({
+  variable: "--font-heading",
   subsets: ["latin"],
 });
 
 export const metadata: Metadata = {
-  title: "CYBERNEXUS_3D | Tharun G",
-  description: "Interactive 3D Cybersecurity Portfolio",
+  title: "Cybernexus | Tharun G",
+  description: "Interactive Cozy Portfolio",
 };
+
+import { ThemeProvider } from "@/components/ui/ThemeProvider";
+import { LiveBackground } from "@/components/ui/LiveBackground";
 
 export default function RootLayout({
   children,
@@ -25,12 +27,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" className="!scroll-smooth" suppressHydrationWarning>
       <body
-        className={`${inter.variable} ${shareTechMono.variable} antialiased bg-background text-foreground`}
+        className={`${nunito.variable} ${quicksand.variable} antialiased text-foreground`}
       >
-        {children}
-        <AudioPlayer />
+        <ThemeProvider attribute="class" defaultTheme="light" enableSystem={false}>
+          <LiveBackground />
+          {children}
+          <AudioPlayer />
+        </ThemeProvider>
       </body>
     </html>
   );

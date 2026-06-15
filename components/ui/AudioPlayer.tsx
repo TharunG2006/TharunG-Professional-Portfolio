@@ -91,25 +91,25 @@ export const AudioPlayer = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 1 }}
-                className="fixed bottom-6 right-6 z-50 flex items-center gap-3 bg-black/80 backdrop-blur-md border border-neon-green/30 p-3 rounded-full shadow-[0_0_15px_rgba(0,255,157,0.2)]"
+                className="fixed bottom-6 right-6 z-50 flex items-center gap-3 bg-white/50 backdrop-blur-xl border border-white/80 p-3 rounded-full shadow-[0_8px_30px_rgba(0,0,0,0.06)]"
             >
                 <button 
                     onClick={togglePlay}
-                    className="w-10 h-10 flex items-center justify-center rounded-full bg-neon-green/10 text-neon-green hover:bg-neon-green hover:text-black transition-colors"
+                    className="w-10 h-10 flex items-center justify-center rounded-full bg-white/60 text-slate-600 hover:text-[#ffb5a7] hover:bg-white transition-all shadow-sm active:scale-95"
                     title={isPlaying ? "Pause Music" : "Play Music"}
                 >
                     {isPlaying ? <Pause className="w-4 h-4" /> : <Play className="w-4 h-4" />}
                 </button>
                 <button 
                     onClick={toggleMute}
-                    className="w-10 h-10 flex items-center justify-center rounded-full bg-neon-green/10 text-neon-green hover:bg-neon-green hover:text-black transition-colors"
+                    className="w-10 h-10 flex items-center justify-center rounded-full bg-white/60 text-slate-600 hover:text-[#a3cfcd] hover:bg-white transition-all shadow-sm active:scale-95"
                     title={isMuted ? "Unmute" : "Mute"}
                 >
                     {isMuted ? <VolumeX className="w-4 h-4" /> : <Volume2 className="w-4 h-4" />}
                 </button>
                 
                 {/* Optional visualizer bars */}
-                <div className="flex items-center gap-1 h-4 pr-2">
+                <div className="flex items-center gap-1 h-4 pr-3 pl-1">
                     {[...Array(4)].map((_, i) => (
                         <motion.div
                             key={i}
@@ -124,7 +124,7 @@ export const AudioPlayer = () => {
                                 delay: i * 0.15,
                                 ease: "easeInOut"
                             }}
-                            className="w-1 bg-neon-green rounded-full opacity-70"
+                            className="w-1 bg-gradient-to-t from-[#ffb5a7] to-[#a3cfcd] rounded-full opacity-80"
                         />
                     ))}
                 </div>

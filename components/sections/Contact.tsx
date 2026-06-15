@@ -1,10 +1,11 @@
 "use client";
 
 import { useState } from "react";
-import { TerminalWindow } from "@/components/ui/TerminalWindow";
+import { ClayCard } from "@/components/ui/ClayCard";
 import { ScrollSection } from "@/components/ui/ScrollSection";
 import { MouseParallax } from "@/components/ui/MouseParallax";
 import { Github, Linkedin, Mail, Instagram, FileText } from "lucide-react";
+import { motion } from "framer-motion";
 
 export const Contact = () => {
     const [formState, setFormState] = useState({ name: "", email: "", message: "" });
@@ -46,98 +47,139 @@ export const Contact = () => {
     };
 
     return (
-        <section className="min-h-screen w-full flex flex-col items-center justify-center relative py-20 px-4">
-            <ScrollSection className="max-w-4xl w-full">
-                <h2 className="text-4xl md:text-5xl font-mono font-bold text-neon-green text-center mb-16 text-glow-green">
-                    &lt;CONTACT_INTERFACE /&gt;
-                </h2>
+        <section className="min-h-screen w-full flex flex-col items-center justify-center relative py-20 px-4 overflow-hidden">
+            <ScrollSection className="max-w-6xl w-full">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-8 items-center">
+                    
+                    {/* Left Side: Massive Text & Socials */}
+                    <div className="flex flex-col space-y-12 pr-0 lg:pr-12">
+                        <motion.div
+                            initial={{ opacity: 0, y: 30 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ type: "spring", stiffness: 100, damping: 20 }}
+                        >
+                            <h2 className="text-5xl md:text-7xl font-heading font-extrabold text-slate-800 dark:text-white leading-[1.1] tracking-tight drop-shadow-sm mb-6">
+                                Let's build something <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#ffb5a7] to-[#a3cfcd]">beautiful</span> together.
+                            </h2>
+                            <p className="text-slate-500 dark:text-slate-300 font-sans text-xl leading-relaxed">
+                                Whether it's a new opportunity, a creative project, or just a friendly chat about tech—my inbox is always open.
+                            </p>
+                        </motion.div>
 
-                <MouseParallax strength={-10}>
-                    <TerminalWindow title="COMMUNICATION_UPLINK" className="bg-black/90">
-                        {status === "sent" ? (
-                            <div className="text-center py-10">
-                                <p className="text-neon-green text-xl mb-2">TRANSMISSION SUCCESSFUL</p>
-                                <p className="text-gray-400">Your message has been securely delivered to my inbox.</p>
-                                <button
-                                    onClick={() => setStatus("idle")}
-                                    className="mt-6 text-neon-cyan hover:underline text-sm"
-                                >
-                                    [SEND_ANOTHER]
-                                </button>
+                        <motion.div
+                            initial={{ opacity: 0, y: 30 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ type: "spring", stiffness: 100, damping: 20, delay: 0.2 }}
+                        >
+                            <div className="flex space-x-6 flex-wrap gap-y-4">
+                                <a href="https://github.com/TharunG2006" target="_blank" rel="noopener noreferrer" className="text-slate-500 dark:text-slate-300 hover:text-[#ffb5a7] transition-colors flex flex-col items-center gap-2 group">
+                                    <div className="p-4 bg-white/40 dark:bg-white/5 rounded-full border border-white/60 dark:border-white/10 shadow-sm group-hover:-translate-y-2 transition-transform">
+                                        <Github className="w-6 h-6" />
+                                    </div>
+                                    <span className="text-[10px] font-bold tracking-wider uppercase">GitHub</span>
+                                </a>
+                                <a href="https://www.linkedin.com/in/tharun-g-b5b53a260/" target="_blank" rel="noopener noreferrer" className="text-slate-500 dark:text-slate-300 hover:text-[#a3cfcd] transition-colors flex flex-col items-center gap-2 group">
+                                    <div className="p-4 bg-white/40 dark:bg-white/5 rounded-full border border-white/60 dark:border-white/10 shadow-sm group-hover:-translate-y-2 transition-transform">
+                                        <Linkedin className="w-6 h-6" />
+                                    </div>
+                                    <span className="text-[10px] font-bold tracking-wider uppercase">LinkedIn</span>
+                                </a>
+                                <a href="mailto:tarun.ganapathi2007@gmail.com" className="text-slate-500 dark:text-slate-300 hover:text-[#ffb5a7] transition-colors flex flex-col items-center gap-2 group">
+                                    <div className="p-4 bg-white/40 dark:bg-white/5 rounded-full border border-white/60 dark:border-white/10 shadow-sm group-hover:-translate-y-2 transition-transform">
+                                        <Mail className="w-6 h-6" />
+                                    </div>
+                                    <span className="text-[10px] font-bold tracking-wider uppercase">Email</span>
+                                </a>
+                                <a href="/Tharun_G_Resume.docx" target="_blank" rel="noopener noreferrer" className="text-slate-500 dark:text-slate-300 hover:text-[#a3cfcd] transition-colors flex flex-col items-center gap-2 group">
+                                    <div className="p-4 bg-white/40 dark:bg-white/5 rounded-full border border-white/60 dark:border-white/10 shadow-sm group-hover:-translate-y-2 transition-transform">
+                                        <FileText className="w-6 h-6" />
+                                    </div>
+                                    <span className="text-[10px] font-bold tracking-wider uppercase">Resume</span>
+                                </a>
                             </div>
-                        ) : (
-                            <form onSubmit={handleSubmit} className="space-y-6">
-                                <div>
-                                    <label className="block text-neon-cyan text-xs font-mono mb-2 uppercase">Identity Handle</label>
-                                    <input
-                                        type="text"
-                                        value={formState.name}
-                                        onChange={(e) => setFormState({ ...formState, name: e.target.value })}
-                                        required
-                                        className="w-full bg-white/5 border border-white/10 p-3 text-white focus:border-neon-green focus:outline-none focus:ring-1 focus:ring-neon-green transition-all"
-                                        placeholder="ENTER_NAME"
-                                    />
-                                </div>
-
-                                <div>
-                                    <label className="block text-neon-cyan text-xs font-mono mb-2 uppercase">Communication Node (Email)</label>
-                                    <input
-                                        type="email"
-                                        value={formState.email}
-                                        onChange={(e) => setFormState({ ...formState, email: e.target.value })}
-                                        required
-                                        className="w-full bg-white/5 border border-white/10 p-3 text-white focus:border-neon-green focus:outline-none focus:ring-1 focus:ring-neon-green transition-all"
-                                        placeholder="ENTER_EMAIL"
-                                    />
-                                </div>
-
-                                <div>
-                                    <label className="block text-neon-cyan text-xs font-mono mb-2 uppercase">Data Packet (Message)</label>
-                                    <textarea
-                                        value={formState.message}
-                                        onChange={(e) => setFormState({ ...formState, message: e.target.value })}
-                                        required
-                                        rows={4}
-                                        className="w-full bg-white/5 border border-white/10 p-3 text-white focus:border-neon-green focus:outline-none focus:ring-1 focus:ring-neon-green transition-all resize-none"
-                                        placeholder="ENTER_MESSAGE_CONTENT..."
-                                    />
-                                </div>
-
-                                <button
-                                    type="submit"
-                                    disabled={isSubmitting}
-                                    className="w-full py-3 bg-neon-green/10 border border-neon-green text-neon-green hover:bg-neon-green hover:text-black transition-all duration-300 uppercase tracking-widest font-bold disabled:opacity-50 disabled:cursor-not-allowed"
-                                >
-                                    {isSubmitting ? "ENCRYPTING & SENDING..." : "INITIATE TRANSMISSION"}
-                                </button>
-                            </form>
-                        )}
-                    </TerminalWindow>
-
-                    {/* Social Links */}
-                    <div className="flex justify-center space-x-8 mt-16">
-                        <a href="https://github.com/TharunG2006" target="_blank" rel="noopener noreferrer" className="text-gray-500 hover:text-neon-cyan transition-colors flex flex-col items-center gap-2 group">
-                            <Github className="w-6 h-6 group-hover:drop-shadow-[0_0_8px_rgba(255,198,255,0.8)]" />
-                            <span className="text-xs font-mono tracking-wider">[GITHUB]</span>
-                        </a>
-                        <a href="https://www.linkedin.com/in/tharun-g-b5b53a260/" target="_blank" rel="noopener noreferrer" className="text-gray-500 hover:text-neon-cyan transition-colors flex flex-col items-center gap-2 group">
-                            <Linkedin className="w-6 h-6 group-hover:drop-shadow-[0_0_8px_rgba(255,198,255,0.8)]" />
-                            <span className="text-xs font-mono tracking-wider">[LINKEDIN]</span>
-                        </a>
-                        <a href="mailto:tarun.ganapathi2007@gmail.com" className="text-gray-500 hover:text-neon-cyan transition-colors flex flex-col items-center gap-2 group">
-                            <Mail className="w-6 h-6 group-hover:drop-shadow-[0_0_8px_rgba(255,198,255,0.8)]" />
-                            <span className="text-xs font-mono tracking-wider">[EMAIL]</span>
-                        </a>
-                        <a href="https://www.instagram.com/_tharun_2006/" target="_blank" rel="noopener noreferrer" className="text-gray-500 hover:text-neon-cyan transition-colors flex flex-col items-center gap-2 group">
-                            <Instagram className="w-6 h-6 group-hover:drop-shadow-[0_0_8px_rgba(255,198,255,0.8)]" />
-                            <span className="text-xs font-mono tracking-wider">[INSTAGRAM]</span>
-                        </a>
-                        <a href="/Tharun_G_Resume.docx" target="_blank" rel="noopener noreferrer" className="text-gray-500 hover:text-neon-cyan transition-colors flex flex-col items-center gap-2 group">
-                            <FileText className="w-6 h-6 group-hover:drop-shadow-[0_0_8px_rgba(255,198,255,0.8)]" />
-                            <span className="text-xs font-mono tracking-wider">[RESUME]</span>
-                        </a>
+                        </motion.div>
                     </div>
-                </MouseParallax>
+
+                    {/* Right Side: Floating Form Card */}
+                    <div className="perspective-[1000px] w-full">
+                        <MouseParallax strength={-15}>
+                            <motion.div
+                                initial={{ opacity: 0, rotateY: 15, x: 50 }}
+                                whileInView={{ opacity: 1, rotateY: -5, x: 0 }}
+                                viewport={{ once: true }}
+                                transition={{ type: "spring", stiffness: 50, damping: 20, delay: 0.3 }}
+                                className="w-full transform-gpu"
+                            >
+                                <ClayCard className="w-full p-8 md:p-10 shadow-[0_30px_60px_rgba(0,0,0,0.08)] border-2 border-white/80 dark:border-white/10">
+                                    {status === "sent" ? (
+                                        <div className="text-center py-16">
+                                            <div className="w-20 h-20 bg-[#a3cfcd]/20 rounded-full flex items-center justify-center mx-auto mb-6">
+                                                <Mail className="w-10 h-10 text-[#a3cfcd]" />
+                                            </div>
+                                            <p className="text-slate-800 dark:text-white font-heading font-bold text-2xl mb-2">Message Sent!</p>
+                                            <p className="text-slate-500 dark:text-slate-300 font-sans mb-8">Thanks for reaching out. I'll get back to you soon.</p>
+                                            <button
+                                                onClick={() => setStatus("idle")}
+                                                className="text-[#ffb5a7] font-bold hover:underline transition-all"
+                                            >
+                                                Send another message
+                                            </button>
+                                        </div>
+                                    ) : (
+                                        <form onSubmit={handleSubmit} className="space-y-6">
+                                            <div>
+                                                <label className="block text-slate-500 dark:text-slate-300 text-sm font-bold uppercase tracking-wider mb-2">Name</label>
+                                                <input
+                                                    type="text"
+                                                    value={formState.name}
+                                                    onChange={(e) => setFormState({ ...formState, name: e.target.value })}
+                                                    required
+                                                    className="w-full bg-white/60 dark:bg-white/5 border border-white dark:border-white/10 p-4 rounded-xl text-slate-700 dark:text-white placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-[#ffb5a7] transition-all resize-none shadow-inner"
+                                                    placeholder="John Doe"
+                                                />
+                                            </div>
+
+                                            <div>
+                                                <label className="block text-slate-500 dark:text-slate-300 text-sm font-bold uppercase tracking-wider mb-2">Email</label>
+                                                <input
+                                                    type="email"
+                                                    value={formState.email}
+                                                    onChange={(e) => setFormState({ ...formState, email: e.target.value })}
+                                                    required
+                                                    className="w-full bg-white/60 dark:bg-white/5 border border-white dark:border-white/10 p-4 rounded-xl text-slate-700 dark:text-white placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-[#ffb5a7] transition-all resize-none shadow-inner"
+                                                    placeholder="john@example.com"
+                                                />
+                                            </div>
+
+                                            <div>
+                                                <label className="block text-slate-500 dark:text-slate-300 text-sm font-bold uppercase tracking-wider mb-2">Message</label>
+                                                <textarea
+                                                    value={formState.message}
+                                                    onChange={(e) => setFormState({ ...formState, message: e.target.value })}
+                                                    required
+                                                    rows={4}
+                                                    className="w-full bg-white/60 dark:bg-white/5 border border-white dark:border-white/10 p-4 rounded-xl text-slate-700 dark:text-white placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-[#ffb5a7] transition-all resize-none shadow-inner"
+                                                    placeholder="Hello Tharun, I'd like to discuss..."
+                                                />
+                                            </div>
+
+                                            <button
+                                                type="submit"
+                                                disabled={isSubmitting}
+                                                className="clay-button w-full py-4 text-center mt-4 text-sm uppercase tracking-widest disabled:opacity-70 disabled:cursor-not-allowed hover:scale-[1.02] active:scale-[0.98] transition-transform"
+                                            >
+                                                {isSubmitting ? "Sending..." : "Send Message"}
+                                            </button>
+                                        </form>
+                                    )}
+                                </ClayCard>
+                            </motion.div>
+                        </MouseParallax>
+                    </div>
+
+                </div>
             </ScrollSection>
         </section>
     );
