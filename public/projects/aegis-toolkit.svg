@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 480" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bg-aegis" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#14070a"/>
+      <stop offset="100%" stop-color="#240c13"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="480" fill="url(#bg-aegis)"/>
+  <rect x="40" y="30" width="720" height="44" rx="8" fill="#2b0d16" stroke="#881337" stroke-width="1.5"/>
+  <circle cx="65" cy="52" r="5" fill="#f43f5e"/>
+  <circle cx="82" cy="52" r="5" fill="#eab308"/>
+  <circle cx="99" cy="52" r="5" fill="#10b981"/>
+  <text x="125" y="57" fill="#fb7185" font-family="monospace" font-size="13" font-weight="bold">AEGIS TOOLKIT // CYBERSECURITY RECON WORKSTATION</text>
+  <text x="630" y="57" fill="#fbbf24" font-family="monospace" font-size="11">IN PROGRESS</text>
+
+  <rect x="40" y="90" width="720" height="345" rx="8" fill="#180a0f" stroke="#881337" stroke-width="1.2"/>
+  <text x="60" y="130" fill="#fb7185" font-family="monospace" font-size="13" font-weight="bold">INTEGRATED PENETRATION TESTING MODULES</text>
+  
+  <rect x="60" y="155" width="210" height="145" rx="8" fill="#2b0d16" stroke="#be123c"/>
+  <text x="75" y="190" fill="#f8fafc" font-family="sans-serif" font-size="14" font-weight="bold">Nmap Scanner</text>
+  <text x="75" y="218" fill="#fda4af" font-family="monospace" font-size="10">Automated TCP/UDP</text>
+  <text x="75" y="236" fill="#fda4af" font-family="monospace" font-size="10">port reconnaissance</text>
+  <text x="75" y="254" fill="#fda4af" font-family="monospace" font-size="10">&amp; OS fingerprinting</text>
+
+  <rect x="295" y="155" width="210" height="145" rx="8" fill="#2b0d16" stroke="#be123c"/>
+  <text x="310" y="190" fill="#f8fafc" font-family="sans-serif" font-size="14" font-weight="bold">Hash Analyzer</text>
+  <text x="310" y="218" fill="#fda4af" font-family="monospace" font-size="10">SHA256, MD5, bcrypt</text>
+  <text x="310" y="236" fill="#fda4af" font-family="monospace" font-size="10">hash identification</text>
+  <text x="310" y="254" fill="#fda4af" font-family="monospace" font-size="10">&amp; validation engine</text>
+
+  <rect x="530" y="155" width="210" height="145" rx="8" fill="#2b0d16" stroke="#be123c"/>
+  <text x="545" y="190" fill="#f8fafc" font-family="sans-serif" font-size="14" font-weight="bold">Payload Encoder</text>
+  <text x="545" y="218" fill="#fda4af" font-family="monospace" font-size="10">Base64, Hex, XOR, URL</text>
+  <text x="545" y="236" fill="#fda4af" font-family="monospace" font-size="10">multi-round encode</text>
+  <text x="545" y="254" fill="#fda4af" font-family="monospace" font-size="10">&amp; decode payload tool</text>
+
+  <rect x="60" y="325" width="680" height="85" rx="6" fill="#13070b" stroke="#4c0519"/>
+  <text x="80" y="355" fill="#f43f5e" font-family="monospace" font-size="11" font-weight="bold">[WORKSTATION CLI INTEGRATION]</text>
+  <text x="80" y="380" fill="#94a3b8" font-family="monospace" font-size="10">&gt; aegis --scan 192.168.1.0/24 --ports top-100 --detect-cve --output audit.json</text>
+</svg>

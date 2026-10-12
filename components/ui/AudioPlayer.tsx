@@ -18,8 +18,11 @@ export const AudioPlayer = () => {
 
     // Step 1: Pick a random track on mount
     useEffect(() => {
-        setMounted(true);
-        setCurrentTrack(tracks[Math.floor(Math.random() * tracks.length)]);
+        const timeout = setTimeout(() => {
+            setMounted(true);
+            setCurrentTrack(tracks[Math.floor(Math.random() * tracks.length)]);
+        }, 0);
+        return () => clearTimeout(timeout);
     }, []);
 
     // Step 2: Try to play when the track is ready

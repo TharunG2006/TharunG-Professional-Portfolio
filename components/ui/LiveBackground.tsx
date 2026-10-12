@@ -26,14 +26,12 @@ export const LiveBackground = () => {
         let h = 0;
 
         const resizeCanvas = () => {
-            // Use CSS pixels, not device pixels — avoids rendering at 2x/3x resolution
             w = window.innerWidth;
             h = window.innerHeight;
             canvas.width = w;
             canvas.height = h;
         };
 
-        // Reduced particle count: 50 instead of 100 cuts line checks from ~5000 to ~1225
         const N = 50;
         const px = new Float32Array(N);
         const py = new Float32Array(N);
@@ -54,7 +52,6 @@ export const LiveBackground = () => {
         const maxDist = 120;
         const maxDistSq = maxDist * maxDist;
 
-        // Throttle to ~30fps for half the GPU cost
         let lastFrameTime = 0;
         const frameInterval = 1000 / 30;
 
@@ -65,11 +62,9 @@ export const LiveBackground = () => {
             if (delta < frameInterval) return;
             lastFrameTime = timestamp - (delta % frameInterval);
 
-            // Clear with solid fill (faster than clearRect with alpha compositing)
             ctx.fillStyle = bgColor;
             ctx.fillRect(0, 0, w, h);
 
-            // Update positions
             for (let i = 0; i < N; i++) {
                 px[i] += pSpeedX[i];
                 py[i] += pSpeedY[i];
@@ -77,7 +72,6 @@ export const LiveBackground = () => {
                 if (py[i] > h || py[i] < 0) pSpeedY[i] = -pSpeedY[i];
             }
 
-            // Batch all lines into a single path (1 draw call instead of ~1225)
             ctx.beginPath();
             ctx.strokeStyle = lineColor;
             ctx.lineWidth = 1;
@@ -94,7 +88,6 @@ export const LiveBackground = () => {
             }
             ctx.stroke();
 
-            // Batch all particles into a single path (1 draw call instead of 50)
             ctx.fillStyle = particleColor;
             ctx.beginPath();
             for (let i = 0; i < N; i++) {
@@ -102,11 +95,8 @@ export const LiveBackground = () => {
                 ctx.arc(px[i], py[i], pSize[i], 0, Math.PI * 2);
             }
             ctx.fill();
-
-            animationFrameId = requestAnimationFrame(animate);
         };
 
-        // Mouse — only runs on mousemove, not every frame
         const handleMouseMove = (e: MouseEvent) => {
             const mx = e.clientX;
             const my = e.clientY;

@@ -1,36 +1,33 @@
 "use client";
 
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion, useScroll, useTransform, useSpring } from "framer-motion";
 import { useRef, ReactNode } from "react";
 
 interface ScrollSectionProps {
-    children: ReactNode;
-    className?: string;
+  children: ReactNode;
+  className?: string;
+  noScale?: boolean;
 }
 
 export const ScrollSection = ({ children, className }: ScrollSectionProps) => {
-    const ref = useRef<HTMLDivElement>(null);
+  const ref = useRef<HTMLDivElement>(null);
 
-    // Track scroll progress relative to the target element
-    const { scrollYProgress } = useScroll({
-        target: ref,
-        offset: ["start end", "end start"]
-    });
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start end", "end start"],
+  });
 
-    // Map scroll progress to opacity and scale
-    // 0 -> 0.2: Fade in
-    // 0.2 -> 0.8: Visible
-    // 0.8 -> 1.0: Fade out
-    const opacity = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [0, 1, 1, 0]);
-    const scale = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [0.8, 1, 1, 0.8]);
+  // Smooth, lightweight opacity transition without expensive scale recalculation
+  const rawOpacity = useTransform(scrollYProgress, [0, 0.08, 0.92, 1], [0.7, 1, 1, 0.7]);
+  const opacity = useSpring(rawOpacity, { stiffness: 120, damping: 30 });
 
-    return (
-        <motion.div
-            ref={ref}
-            style={{ opacity, scale }}
-            className={className ? `${className} relative` : "relative"}
-        >
-            {children}
-        </motion.div>
-    );
+  return (
+    <motion.div
+      ref={ref}
+      style={{ opacity }}
+      className={className ? `${className} relative` : "relative"}
+    >
+      {children}
+    </motion.div>
+  );
 };

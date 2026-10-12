@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 480" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bg-orion" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0a0518"/>
+      <stop offset="50%" stop-color="#140b2e"/>
+      <stop offset="100%" stop-color="#05030f"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="480" fill="url(#bg-orion)"/>
+
+  <rect x="40" y="30" width="720" height="44" rx="8" fill="#1e1035" stroke="#3b1f63" stroke-width="1.5"/>
+  <circle cx="65" cy="52" r="5" fill="#f43f5e"/>
+  <circle cx="82" cy="52" r="5" fill="#eab308"/>
+  <circle cx="99" cy="52" r="5" fill="#10b981"/>
+  <text x="125" y="57" fill="#c084fc" font-family="monospace" font-size="13" font-weight="bold">ORION AI // LOCAL-FIRST HYBRID RAG ASSISTANT</text>
+  <text x="615" y="57" fill="#a855f7" font-family="monospace" font-size="11">TAURI 2 + RUST</text>
+
+  <rect x="40" y="90" width="340" height="345" rx="8" fill="#120924" stroke="#2e154f" stroke-width="1.2"/>
+  <text x="60" y="125" fill="#c084fc" font-family="monospace" font-size="12" font-weight="bold">OFFLINE CORE ARCHITECTURE</text>
+
+  <rect x="60" y="145" width="300" height="52" rx="6" fill="#1e1035" stroke="#3b1f63"/>
+  <text x="75" y="168" fill="#f8fafc" font-family="sans-serif" font-size="12" font-weight="bold">Python &amp; Rust Engine (PyO3)</text>
+  <text x="75" y="186" fill="#a78bfa" font-family="monospace" font-size="10">High-speed native token &amp; vector ops</text>
+
+  <rect x="60" y="210" width="300" height="52" rx="6" fill="#1e1035" stroke="#3b1f63"/>
+  <text x="75" y="233" fill="#f8fafc" font-family="sans-serif" font-size="12" font-weight="bold">FAISS + SQLite FTS5 Hybrid RAG</text>
+  <text x="75" y="251" fill="#a78bfa" font-family="monospace" font-size="10">Dense embeddings + BM25 keyword search</text>
+
+  <rect x="60" y="275" width="300" height="52" rx="6" fill="#1e1035" stroke="#3b1f63"/>
+  <text x="75" y="298" fill="#f8fafc" font-family="sans-serif" font-size="12" font-weight="bold">Sandboxed Agent Runtime</text>
+  <text x="75" y="316" fill="#a78bfa" font-family="monospace" font-size="10">Local code execution &amp; automated tools</text>
+
+  <text x="60" y="375" fill="#818cf8" font-family="monospace" font-size="11">Linux • macOS • Windows</text>
+  <text x="60" y="398" fill="#64748b" font-family="monospace" font-size="10">Zero Cloud Data Exfiltration</text>
+
+  <rect x="400" y="90" width="360" height="345" rx="8" fill="#090414" stroke="#2e154f" stroke-width="1.2"/>
+  
+  <circle cx="580" cy="200" r="65" fill="none" stroke="#a855f7" stroke-width="1.5" stroke-dasharray="6 3"/>
+  <circle cx="580" cy="200" r="45" fill="#2e154f" opacity="0.6"/>
+  <circle cx="580" cy="200" r="28" fill="#7c3aed" opacity="0.4"/>
+  <circle cx="580" cy="200" r="10" fill="#c084fc"/>
+
+  <text x="430" y="315" fill="#e9d5ff" font-family="monospace" font-size="12" font-weight="bold">&gt; ORION: "Ready to assist offline."</text>
+  <text x="430" y="345" fill="#94a3b8" font-family="sans-serif" font-size="11">Indexed 12,400 docs in SQLite FTS5</text>
+  <text x="430" y="370" fill="#94a3b8" font-family="sans-serif" font-size="11">Local latency: ~14ms time-to-first-token</text>
+</svg>
